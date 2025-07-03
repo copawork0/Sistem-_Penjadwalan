@@ -1,0 +1,25 @@
+{
+  "build": {
+    "builder": "NIXPACKS",
+    "nixpacksPlan": {
+      "phases": {
+        "setup": {
+          "commands": [
+            "npm install",
+            "composer install --no-interaction --prefer-dist --optimize-autoloader"
+          ]
+        },
+        "build": {
+          "commands": [
+            "php artisan config:clear",
+            "php artisan cache:clear",
+            "php artisan view:clear",
+            "php artisan config:cache",
+            "echo APP_URL=$APP_URL",
+            "npm run build"
+          ]
+        }
+      }
+    }
+  }
+} 
